@@ -605,11 +605,11 @@ class UIR_PolyKernel(nn.Module):
         inp_dec_level3 = self.reduce_chan_level3(inp_dec_level3)
         out_dec_level3 = self.decoder_level3(inp_dec_level3)
 
-        # inp_dec_level2 = self.up3_2(out_dec_level3)
+        inp_dec_level2 = self.up3_2(out_dec_level3)
         # aha2_input = cat(inp_dec_level2, out_eca_aha1)
         # aha2_input = self.reduce_before_aha2(aha2_input)
         # aha2_input = self.attention_lka2_to_lka1(aha2_input)
-        inp_dec_level2 = cat(out_dec_level3, out_enc_level2)
+        inp_dec_level2 = cat(inp_dec_level2, out_enc_level2)
         inp_dec_level2 = self.reduce_chan_level2(inp_dec_level2)
         out_dec_level2 = self.decoder_level2(inp_dec_level2)
 
